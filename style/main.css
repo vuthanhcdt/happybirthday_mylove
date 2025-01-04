@@ -7,6 +7,7 @@ body {
   margin: 0;
 }
 
+
 .song {
   visibility: hidden;
 }
@@ -97,23 +98,24 @@ body {
 
 .six {
   position: relative;
-  top: 10vh;
-  z-index: 1;
+  text-align: center; /* Căn giữa nội dung */
 }
 
 .six img {
-  display: inline-block;
-  height: 450px;
-  max-width: 100%;
-  /* height: auto; */
+  display: block;
+  margin: 0 auto; /* Căn giữa hình ảnh chính */
+  max-width: 100%; /* Đảm bảo không vượt quá kích thước container */
+  max-height: 450px; /* Giới hạn chiều cao hình ảnh */
+  height: auto; /* Giữ tỷ lệ hình ảnh */
 }
 
 .six .hat {
-  left: 47.0%;
   position: absolute;
-  /* transform: scale(0.1); */
-  top: -33%;
-  width: 80px;
+  top: -3%; /* Đặt nón phía trên hình ảnh */
+  left: 50%; /* Căn giữa nón ngang */
+  transform: translateX(-50%); /* Đảm bảo nón nằm chính giữa */
+  width: 15%; /* Điều chỉnh kích thước nón theo phần trăm */
+  max-width: 80px; /* Đảm bảo nón không quá lớn */
 }
 
 .baloons img {
@@ -225,30 +227,6 @@ body {
   z-index: 3;
 }
 
-/* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
-  }
-}
 
 @media screen and (max-width: 500px) {
   .container {
@@ -272,10 +250,7 @@ body {
     font-size: 10rem;
   }
 
-  .six .hat {
-    /* top: -20px; */
-    width: 50px;
-  }
+
 
   .wish-hbd {
     font-size: 2.2em;

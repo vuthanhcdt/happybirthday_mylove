@@ -1,22 +1,32 @@
-// trigger to play music in the background with sweetalert
 window.addEventListener('load', () => {
+    // Đặt nền toàn bộ thành màu đen khi trang tải
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white'; // Text màu trắng
+
     Swal.fire({
-        title: 'Do you want to play music in the background?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.querySelector('.song').play();
-            animationTimeline();
-        } else {
-            animationTimeline();
+        html: '<button id="play-music" class="swal2-confirm swal2-styled">Bật đèn</button>',
+        showConfirmButton: false, // Remove the default confirm button
+        allowOutsideClick: false, // Prevent clicking outside to close
+        allowEscapeKey: false,   // Prevent pressing Escape to close
+        background: '#000', // SweetAlert nền màu đen
+        customClass: {
+            popup: 'swal2-black-popup' // Tùy chỉnh thêm (nếu cần)
+        }
+    });
+
+    // Add event listener to the custom button
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'play-music') {
+            document.querySelector('.song').play(); // Play the music
+            animationTimeline(); // Start animation
+            Swal.close(); // Close the SweetAlert modal
+            // Đổi nền thành màu trắng sau khi nhấn
+            document.body.style.backgroundColor = 'white';
+            document.body.style.color = 'black'; // Text màu đen
         }
     });
 });
+
 
 
 // animation timeline
@@ -31,6 +41,7 @@ const animationTimeline = () => {
 
     hbd.innerHTML = `<span>${hbd.innerHTML
         .split("")
+        .map(char => (char === " " ? "&nbsp;" : char)) // Thay dấu cách bằng &nbsp;
         .join("</span><span>")}</span>`;
 
     const ideaTextTrans = {
