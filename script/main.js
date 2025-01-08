@@ -17,6 +17,17 @@ window.addEventListener('load', () => {
     // Add event listener to the custom button
     document.addEventListener('click', (e) => {
         if (e.target && e.target.id === 'play-music') {
+            // Chuyển sang chế độ full screen
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari và Opera
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                document.documentElement.msRequestFullscreen();
+            }
+
             document.querySelector('.song').play(); // Play the music
             animationTimeline(); // Start animation
             Swal.close(); // Close the SweetAlert modal
